@@ -27,8 +27,10 @@ let baseDeDatos = {};
 let registro = {};
 let x = 1;
 
+let contenedor = document.getElementById("contenedor");
+
 //Función para guardar los datos de las ventas
-function save() {  
+function save() {    
   if(vendedor.value != "Vendedor"){
   if (aqua.checked && Number(cantidadAqua.value) > 0) {
     montoAqua = Number(cantidadAqua.value) * 200;
@@ -74,8 +76,8 @@ guardar.addEventListener("click", function () {
 
 function resultados(){
   // debugger;
-let contenedor = document.getElementById("contenedor");
-var listaVendedores = document.createElement('ul');
+  contenedor.innerText = "";
+let listaVendedores = document.createElement('ul');
 
 for (let vendedor in baseDeDatos) {
 
@@ -98,10 +100,10 @@ for (let vendedor in baseDeDatos) {
     totalVendido += baseDeDatos[vendedor][producto].montoVendido;
 
     // Crear un elemento li (elemento de lista) para el producto
-    var itemProducto = document.createElement('li');
+    let itemProducto = document.createElement('li');
     
     // Crear un nodo de texto con el nombre del producto y sus detalles
-    var textoProducto = document.createTextNode(producto + ': cantidad - ' + baseDeDatos[vendedor][producto].cantidad + ', montoVendido - ' + baseDeDatos[vendedor][producto].montoVendido);
+    let textoProducto = document.createTextNode(producto + ': cantidad - ' + baseDeDatos[vendedor][producto].cantidad + ', montoVendido - ' + baseDeDatos[vendedor][producto].montoVendido);
     
     // Añadir el nodo de texto al elemento li
     itemProducto.appendChild(textoProducto);
